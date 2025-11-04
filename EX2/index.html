@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registrazione - MusicStream</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: #fff;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+      }
+
+      .container {
+        background: #1a1a1a;
+        border-radius: 20px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        padding: 40px;
+        max-width: 500px;
+        width: 100%;
+        backdrop-filter: blur(10px);
+      }
+
+      .logo {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      .logo h1 {
+        color: #4ade80;
+        font-size: 32px;
+        margin-bottom: 5px;
+      }
+
+      .logo p {
+        color: #9ca3af;
+        font-size: 14px;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      label {
+        display: block;
+        color: #4ade80;
+        font-weight: 600;
+        margin-bottom: 8px;
+        font-size: 14px;
+      }
+
+      .name-container {
+        display: flex;
+        gap: 1em;
+      }
+      input[type="text"],
+      input[type="email"],
+      input[type="password"],
+      input[type="date"],
+      input[type="number"] {
+        width: 100%;
+        padding: 12px 15px;
+        border: 2px solid #374151;
+        border-radius: 10px;
+        font-size: 14px;
+        transition: all 0.3s ease;
+        background: #111827;
+        color: #e5e7eb;
+      }
+
+      input[type="text"]:focus,
+      input[type="email"]:focus,
+      input[type="password"]:focus,
+      input[type="date"]:focus,
+      input[type="number"]:focus {
+        border-color: #4ade80;
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.1);
+      }
+
+      .checkbox-group {
+        margin-bottom: 20px;
+      }
+      .checkbox-container {
+        display: flex;
+        gap: 3em;
+      }
+
+      .checkbox-group label {
+        font-weight: 600;
+        margin-bottom: 15px;
+      }
+
+      .checkbox-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        padding: 8px;
+        border-radius: 8px;
+      }
+
+      .checkbox-item:hover {
+        background: #374151;
+      }
+
+      .checkbox-item input[type="checkbox"] {
+        width: 18px;
+        height: 18px;
+        margin-right: 10px;
+        cursor: pointer;
+        accent-color: #4ade80;
+      }
+
+      .checkbox-item label {
+        margin: 0;
+        font-weight: 400;
+        cursor: pointer;
+        flex: 1;
+        color: #e5e7eb;
+      }
+
+      .radio-group {
+        margin-bottom: 25px;
+      }
+
+      .radio-item {
+        display: flex;
+        align-items: center;
+        padding: 12px;
+        border: 2px solid #374151;
+        border-radius: 10px;
+        margin-bottom: 10px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        background: #111827;
+      } /* a */
+
+      .radio-item:hover {
+        border-color: #4ade80;
+        background: #1f2937;
+      }
+
+      .radio-item input[type="radio"] {
+        width: 18px;
+        height: 18px;
+        margin-right: 10px;
+        cursor: pointer;
+        accent-color: #4ade80;
+      }
+
+      .radio-item label {
+        margin: 0;
+        font-weight: 400;
+        cursor: pointer;
+        font-size: 13px;
+        flex: 1;
+        color: #e5e7eb;
+      }
+
+      button[type="submit"] {
+        width: 100%;
+        padding: 15px;
+        background: #4ade80;
+        color: #1a1a1a;
+        border: none;
+        border-radius: 10px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: transform 0.2s, box-shadow 0.2s, background 0.3s,
+          opacity 0.3s;
+        margin-top: 10px;
+      }
+
+      button[type="submit"]:disabled {
+        background: #374151;
+        color: #6b7280;
+        cursor: not-allowed;
+        opacity: 0.6;
+      }
+
+      button[type="submit"]:not(:disabled):hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(74, 222, 128, 0.4);
+      }
+
+      button[type="submit"]:not(:disabled):active {
+        transform: translateY(0);
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+      }
+
+      .modal-content {
+        background: white;
+        padding: 40px;
+        border-radius: 20px;
+        text-align: center;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        animation: slideIn 0.3s ease;
+      }
+
+      @keyframes slideIn {
+        from {
+          transform: translateY(-50px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      .modal-content h2 {
+        color: #4ade80;
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+
+      .modal-content p {
+        color: #666;
+        font-size: 16px;
+      }
+
+      .checkmark {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: #4ade80;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto 20px;
+        font-size: 30px;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="logo">
+        <h1>MusicStream</h1>
+        <p>Inizia il tuo viaggio musicale</p>
+      </div>
+
+      <form id="registrationForm">
+        <div class="name-container">
+          <div class="form-group">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" name="nome" required />
+          </div>
+
+          <div class="form-group">
+            <label for="cognome">Cognome</label>
+            <input type="text" id="cognome" name="cognome" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Indirizzo Email</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required />
+        </div>
+
+        <div class="form-group">
+          <label for="dataNascita">Data di Nascita</label>
+          <input type="date" id="dataNascita" name="dataNascita" required />
+        </div>
+
+        <div class="form-group">
+          <label for="telefono">Numero di Telefono</label>
+          <input type="number" id="telefono" name="telefono" required />
+        </div>
+
+        <div class="checkbox-group">
+          <label>I tuoi gusti musicali</label>
+          <div class="checkbox-container">
+            <div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="pop" name="genere" value="pop" />
+                <label for="pop">Pop</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="rock" name="genere" value="rock" />
+                <label for="rock">Rock</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="jazz" name="genere" value="jazz" />
+                <label for="jazz">Jazz</label>
+              </div>
+            </div>
+            <div>
+              <div class="checkbox-item">
+                <input
+                  type="checkbox"
+                  id="classica"
+                  name="genere"
+                  value="classica"
+                />
+                <label for="classica">Classica</label>
+              </div>
+
+              <div class="checkbox-item">
+                <input
+                  type="checkbox"
+                  id="hiphop"
+                  name="genere"
+                  value="hiphop"
+                />
+                <label for="hiphop">Hip Hop</label>
+              </div>
+              <div class="checkbox-item">
+                <input
+                  type="checkbox"
+                  id="elettronica"
+                  name="genere"
+                  value="elettronica"
+                />
+                <label for="elettronica">Elettronica</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="radio-group">
+          <div class="radio-item">
+            <input
+              type="radio"
+              id="accetta"
+              name="termini"
+              value="accetta"
+              required
+            />
+            <label for="accetta">Accetto i termini e le condizioni</label>
+          </div>
+        </div>
+
+        <button type="submit">Invia registrazione</button>
+      </form>
+    </div>
+
+    <div class="modal" id="successModal">
+      <div class="modal-content">
+        <div class="checkmark">✓</div>
+        <h2>Registrazione inviata!</h2>
+        <p>Benvenuto in MusicStream</p>
+      </div>
+    </div>
+
+    <script>
+      const form = document.getElementById("registrationForm");
+      const submitBtn = form.querySelector('button[type="submit"]');
+
+      // Disable button initially
+      submitBtn.disabled = true;
+
+      // Function to check if all required fields are filled
+      function checkFormValidity() {
+        const nome = document.getElementById("nome").value.trim();
+        const cognome = document.getElementById("cognome").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value.trim();
+        const dataNascita = document.getElementById("dataNascita").value;
+        const telefono = document.getElementById("telefono").value.trim();
+        const terminiAccettati = document.getElementById("accetta").checked;
+
+        // Check if all required fields are filled
+        const allFieldsFilled =
+          nome &&
+          cognome &&
+          email &&
+          password &&
+          dataNascita &&
+          telefono &&
+          terminiAccettati;
+
+        submitBtn.disabled = !allFieldsFilled;
+      }
+
+      // Add event listeners to all form inputs
+      const inputs = form.querySelectorAll("input[required]");
+      inputs.forEach((input) => {
+        input.addEventListener("input", checkFormValidity);
+        input.addEventListener("change", checkFormValidity);
+      });
+
+      // Handle form submission
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const modal = document.getElementById("successModal");
+        modal.style.display = "flex";
+
+        setTimeout(function () {
+          modal.style.display = "none";
+        }, 3000);
+      });
+    </script>
+  </body>
+</html>
