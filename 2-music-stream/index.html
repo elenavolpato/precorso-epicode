@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registrazione - MusicStream</title>
+     <link rel="stylesheet" href="styles.css" />
+
+  </head>
+  <body>
+     <div class="other-exercises">
+            <div>
+        <a href="/1-pagina-di-presentazione/index.html"
+          >Presentazione </a
+        >
+      </div>
+
+      <div><a href="/3-CSS/index.html">Città Storiche</a></div>
+      <div><a href="/4-youtube-copy/index.html">Youtube copy</a></div>
+    </div>
+    <section>
+    <div class="container">
+      <div class="logo">
+        <h1>MusicStream</h1>
+        
+        <p>Inizia il tuo viaggio musicale</p>
+      </div>
+
+      <form id="registrationForm">
+        <div class="name-container">
+          <div class="form-group">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" name="nome" required />
+          </div>
+
+          <div class="form-group">
+            <label for="cognome">Cognome</label>
+            <input type="text" id="cognome" name="cognome" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Indirizzo Email</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required />
+        </div>
+
+        <div class="form-group">
+          <label for="dataNascita">Data di Nascita</label>
+          <input type="date" id="dataNascita" name="dataNascita" required />
+        </div>
+
+        <div class="form-group">
+          <label for="telefono">Numero di Telefono</label>
+          <input type="number" id="telefono" name="telefono" required />
+        </div>
+
+        <div class="checkbox-group">
+          <label>I tuoi gusti musicali</label>
+          <div class="checkbox-container">
+            <div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="pop" name="genere" value="pop" />
+                <label for="pop">Pop</label>
+              </div>
+               <div class="checkbox-item">
+                <input type="checkbox" id="jazz" name="genere" value="jazz" />
+                <label for="jazz">Jazz</label>
+              </div>
+            </div>
+            <div>
+              
+
+              <div class="checkbox-item">
+                <input
+                  type="checkbox"
+                  id="hiphop"
+                  name="genere"
+                  value="hiphop"
+                />
+                <label for="hiphop">Hip Hop</label>
+              </div>
+              <div class="checkbox-item">
+                <input
+                  type="checkbox"
+                  id="elettronica"
+                  name="genere"
+                  value="elettronica"
+                />
+                <label for="elettronica">Elettronica</label>
+              </div>
+            </div>
+            <div class="checkbox-container">
+            <div>
+              
+              <div class="checkbox-item">
+                <input
+                  type="checkbox"
+                  id="classica"
+                  name="genere"
+                  value="classica"
+                />
+                <label for="classica">Classica</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="jazz" name="genere" value="jazz" />
+                <label for="jazz">Jazz</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="radio-group">
+          <div class="radio-item">
+            <input
+              type="radio"
+              id="accetta"
+              name="termini"
+              value="accetta"
+              required
+            />
+            <label for="accetta">Accetto i termini e le condizioni</label>
+          </div>
+        </div>
+
+        <button type="submit">Invia registrazione</button>
+      </form>
+    </div>
+
+    <div class="modal" id="successModal">
+      <div class="modal-content">
+        <div class="checkmark">✓</div>
+        <h2>Registrazione inviata!</h2>
+        <p>Benvenuto in MusicStream</p>
+      </div>
+    </div>
+</section>
+    <script>
+      const form = document.getElementById("registrationForm");
+      const submitBtn = form.querySelector('button[type="submit"]');
+
+      // Disable button initially
+      submitBtn.disabled = true;
+
+      // Function to check if all required fields are filled
+      function checkFormValidity() {
+        const nome = document.getElementById("nome").value.trim();
+        const cognome = document.getElementById("cognome").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value.trim();
+        const dataNascita = document.getElementById("dataNascita").value;
+        const telefono = document.getElementById("telefono").value.trim();
+        const terminiAccettati = document.getElementById("accetta").checked;
+
+        // Check if all required fields are filled
+        const allFieldsFilled =
+          nome &&
+          cognome &&
+          email &&
+          password &&
+          dataNascita &&
+          telefono &&
+          terminiAccettati;
+
+        submitBtn.disabled = !allFieldsFilled;
+      }
+
+      // Add event listeners to all form inputs
+      const inputs = form.querySelectorAll("input[required]");
+      inputs.forEach((input) => {
+        input.addEventListener("input", checkFormValidity);
+        input.addEventListener("change", checkFormValidity);
+      });
+
+      // Handle form submission
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const modal = document.getElementById("successModal");
+        modal.style.display = "flex";
+
+        setTimeout(function () {
+          modal.style.display = "none";
+        }, 3000);
+      });
+    </script>
+  </body>
+</html>

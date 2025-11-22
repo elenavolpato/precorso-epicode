@@ -1,0 +1,204 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", Arial, sans-serif;
+  color: #161616;
+  background-color: #fff;
+}
+
+.container {
+  display: flex;
+}
+.main {
+  width: 100%;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  height: 100%;
+}
+
+.logo img {
+  height: 13vh;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  height: 8vh;
+  padding-top: 13px;
+  margin-right: 1.5em;
+}
+
+.menu-icon {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.yt-icon {
+  width: 90px;
+  height: 20px;
+  background: #ff0000;
+  border-radius: 2px;
+  position: relative;
+}
+
+.topbar-center {
+  display: flex;
+  gap: 8px;
+  width: 500px;
+  margin-inline: 1em;
+}
+
+.search-box {
+  height: 2.5em;
+  width: 100%;
+  display: flex;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 16px;
+  outline: none;
+}
+
+.search-btn {
+  padding: 0 18px;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.voice-btn {
+  width: 40px;
+  height: 40px;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+}
+ion-icon {
+  font-size: 20px;
+  color: #2e2e2e;
+}
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 20px;
+}
+
+.sidebar {
+  height: 100vh;
+  overflow-y: auto;
+  width: 100px;
+}
+
+.sidebar-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-block: 2.5em;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.sidebar-icon:first-child {
+  padding-top: 2em;
+}
+
+.sidebar-icon div {
+  font-size: 13px;
+  padding-top: 0.25em;
+}
+
+.main-content {
+  padding: 24px;
+  width: 100%;
+}
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.video-card {
+  cursor: pointer;
+}
+
+.thumbnail {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: linear-gradient(135deg, #1e3a8a 0%, #7c3aed 50%, #db2777 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.thumbnail-icon {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  width: 32px;
+  height: 32px;
+  backdrop-filter: blur(10px);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-info {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.channel-avatar {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, #7c3aed, #db2777);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.video-details h3 {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+
+.video-details p {
+  font-size: 12px;
+  color: #aaa;
+}
+
+.other-exercises {
+  display: flex;
+  justify-content: space-evenly;
+  padding-block: 1em;
+  margin: 0;
+  background-color: #07080e;
+}
+.other-exercises a {
+  text-decoration: none;
+  font-weight: 600;
+  color: white;
+}
+.other-exercises a:hover,
+.other-exercises a:focus {
+  color: #d02984;
+}

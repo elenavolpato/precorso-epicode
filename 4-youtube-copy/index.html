@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YouTube Clone - Web Prep</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="other-exercises">
+      <div>
+        <a href="/1-pagina-di-presentazione/index.html">Presentazione</a>
+      </div>
+
+      <div><a href="/2-music-stream/index.html">Music stream</a></div>
+      <div><a href="/3-CSS/index.html">Città Storiche</a></div>
+    </div>
+    <div class="container">
+      <div class="sidebar">
+        <div class="sidebar-icon">
+          <ion-icon name="menu-sharp"></ion-icon>
+        </div>
+        <div class="sidebar-icon">
+          <ion-icon name="home-outline"></ion-icon>
+          <div>Home</div>
+        </div>
+        <div class="sidebar-icon">
+          <ion-icon name="compass-outline"></ion-icon>
+          <div>Explore</div>
+        </div>
+        <div class="sidebar-icon">
+          <ion-icon name="albums-outline"></ion-icon>
+          <div>Library</div>
+        </div>
+      </div>
+
+      <div class="main">
+        <div class="topbar">
+          <div class="topbar-left">
+            <div class="logo">
+              <img
+                src="new-youtube-logo-logo-svgrepo-com.svg"
+                alt="youtube logo"
+              />
+            </div>
+          </div>
+          <div class="topbar-center">
+            <div class="search-box">
+              <input
+                type="text"
+                class="search-input"
+                placeholder="Search on YouTube"
+              />
+              <button class="search-btn">
+                <ion-icon name="search-outline"></ion-icon>
+              </button>
+            </div>
+            <button class="voice-btn">
+              <ion-icon name="mic-sharp"></ion-icon>
+            </button>
+          </div>
+          <div class="topbar-right">
+            <div><ion-icon name="videocam-outline"></ion-icon></div>
+            <div><ion-icon name="notifications-outline"></ion-icon></div>
+            <div><ion-icon name="person-circle-outline"></ion-icon></div>
+          </div>
+        </div>
+        <div class="main-content">
+          <div class="video-grid" id="videoGrid"></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const videoGrid = document.getElementById("videoGrid");
+      const numberOfVideos = 6;
+
+      for (let i = 0; i < numberOfVideos; i++) {
+        const videoCard = document.createElement("div");
+        videoCard.className = "video-card";
+
+        videoCard.innerHTML = `
+                <div class="thumbnail">
+                    <div class="thumbnail-icon">⚡</div>
+                </div>
+                <div class="video-info">
+                    <div class="channel-avatar"></div>
+                    <div class="video-details">
+                        <h3>Title</h3>
+                        <p>Description</p>
+                    </div>
+                </div>
+            `;
+
+        videoGrid.appendChild(videoCard);
+      }
+    </script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
+</html>
